@@ -3,7 +3,7 @@
 Summary:        Hard Drive Temperature Monitoring
 Name:           hddtemp
 Version:        0.3 
-Release:        %mkrel 0.%{betarel}.6
+Release:        %mkrel 0.%{betarel}.7
 License:        GPL
 Group:          Monitoring        
 URL:            http://www.guzu.net/linux/hddtemp.php
@@ -15,7 +15,7 @@ Source4:        hddtemp.sysconfig
 Source5:        hddtemp.pam
 Source6:        hddtemp.consoleapp
 Patch0:         hddtemp-0.3-beta15-no-verify-sata-magics.patch
-Patch1:         hddtemp-hddtemp-db-wd-re-160.patch
+Patch1:         hddtemp-hddtemp-db-hdt-t7k250-250-wdc-re-160.patch
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires:       usermode-consoleonly
