@@ -9,7 +9,7 @@ Group:          Monitoring
 URL:            http://www.guzu.net/linux/hddtemp.php
 Source0:        http://download.savannah.nongnu.org/releases/hddtemp/hddtemp-%{version}-%{betarel}.tar.bz2
 Source1:        http://download.savannah.nongnu.org/releases/hddtemp/hddtemp-%{version}-%{betarel}.tar.bz2.sig
-Source2:        http://www.guzu.net/linux/hddtemp.db
+Source2:        http://download.savannah.nongnu.org/releases/hddtemp/hddtemp.db
 Source3:        hddtemp.init
 Source4:        hddtemp.sysconfig
 Source5:        hddtemp.pam
