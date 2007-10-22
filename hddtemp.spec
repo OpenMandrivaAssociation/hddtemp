@@ -30,7 +30,6 @@ information. Only modern hard drives have a temperature sensor.
 %prep
 %setup -q -n hddtemp-%{version}-%{betarel}
 %patch0 -p1
-%{__cp} -a %{SOURCE2} hddtemp.db
 
 %build
 %{configure2_5x} --with-db-path=%{_sysconfdir}/hddtemp.db
@@ -38,9 +37,9 @@ information. Only modern hard drives have a temperature sensor.
 
 %install
 %{__rm} -rf %{buildroot}
-%{makeinstall}
+%{makeinstall_std}
 
-%{__install} -m 0644 hddtemp.db -D %{buildroot}%{_sysconfdir}/hddtemp.db
+%{__install} -m 0644 %{SOURCE2} -D %{buildroot}%{_sysconfdir}/hddtemp.db
 %{__install} -m 0755 %{SOURCE3} -D %{buildroot}%{_initrddir}/hddtemp
 %{__install} -m 0644 %{SOURCE4} -D %{buildroot}%{_sysconfdir}/sysconfig/hddtemp
 %{__mkdir_p} %{buildroot}%{_bindir}
