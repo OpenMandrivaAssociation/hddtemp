@@ -15,7 +15,6 @@ Source4:        hddtemp.sysconfig
 Source5:        hddtemp.pam
 Source6:        hddtemp.consoleapp
 Patch0:         hddtemp-0.3-beta15-no-verify-sata-magics.patch
-Patch1:         hddtemp-hddtemp-db-hdt-t7k250-250-wdc-re-160.patch
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires:       usermode-consoleonly
@@ -32,7 +31,6 @@ information. Only modern hard drives have a temperature sensor.
 %setup -q -n hddtemp-%{version}-%{betarel}
 %patch0 -p1
 %{__cp} -a %{SOURCE2} hddtemp.db
-%patch1 -p0
 
 %build
 %{configure2_5x} --with-db-path=%{_sysconfdir}/hddtemp.db
