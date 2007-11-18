@@ -3,7 +3,7 @@
 Summary:        Hard Drive Temperature Monitoring
 Name:           hddtemp
 Version:        0.3 
-Release:        %mkrel 0.%{betarel}.7
+Release:        %mkrel 0.%{betarel}.8
 License:        GPL
 Group:          Monitoring        
 URL:            http://www.guzu.net/linux/hddtemp.php
@@ -69,5 +69,3 @@ information. Only modern hard drives have a temperature sensor.
 %config(noreplace) %{_sysconfdir}/pam.d/hddtemp
 %config(noreplace) %{_sysconfdir}/security/console.apps/hddtemp
 %{_mandir}/man8/hddtemp.8*
-
-
