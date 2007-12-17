@@ -20,7 +20,6 @@ Requires(preun): rpm-helper
 Requires:       usermode-consoleonly
 BuildRequires:  gettext
 BuildRequires:  perl
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 hddtemp is a tool that gives you the temperature of your IDE or SCSI 
