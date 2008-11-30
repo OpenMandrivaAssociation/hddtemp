@@ -3,8 +3,8 @@
 Summary:        Hard Drive Temperature Monitoring
 Name:           hddtemp
 Version:        0.3 
-Release:        %mkrel 0.%{betarel}.8
-License:        GPL
+Release:        %mkrel 0.%{betarel}.9
+License:        GPLv2
 Group:          Monitoring        
 URL:            http://www.guzu.net/linux/hddtemp.php
 Source0:        http://download.savannah.nongnu.org/releases/hddtemp/hddtemp-%{version}-%{betarel}.tar.bz2
@@ -14,7 +14,7 @@ Source3:        hddtemp.init
 Source4:        hddtemp.sysconfig
 Source5:        hddtemp.pam
 Source6:        hddtemp.consoleapp
-Patch0:         hddtemp-0.3-beta15-no-verify-sata-magics.patch
+Patch0:		hddtemp_0.3-beta15-45.diff
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires:       usermode-consoleonly
@@ -23,21 +23,24 @@ BuildRequires:  perl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
-hddtemp is a tool that gives you the temperature of your IDE or SCSI 
-hard drive (that support this feature) by reading S.M.A.R.T.
-information. Only modern hard drives have a temperature sensor.
+hddtemp is a tool that gives you the temperature of your IDE or SCSI hard drive
+(that support this feature) by reading S.M.A.R.T. information. Only modern hard
+drives have a temperature sensor.
 
 %prep
 %setup -q -n hddtemp-%{version}-%{betarel}
 %patch0 -p1
 
 %build
-%{configure2_5x} --with-db-path=%{_sysconfdir}/hddtemp.db
-%{make}
+%configure2_5x \
+    --with-db-path=%{_sysconfdir}/hddtemp.db
+
+%make
 
 %install
 %{__rm} -rf %{buildroot}
-%{makeinstall_std}
+
+%makeinstall_std
 
 %{__install} -m 0644 %{SOURCE2} -D %{buildroot}%{_sysconfdir}/hddtemp.db
 %{__install} -m 0755 %{SOURCE3} -D %{buildroot}%{_initrddir}/hddtemp
@@ -60,7 +63,7 @@ information. Only modern hard drives have a temperature sensor.
 
 %files -f %{name}.lang
 %defattr(0644,root,root,0755)
-%doc ChangeLog README TODO contribs
+%doc ChangeLog README TODO contribs debian/changelog
 %attr(0755,root,root) %{_bindir}/hddtemp
 %attr(0755,root,root) %{_initrddir}/hddtemp
 %attr(0755,root,root) %{_sbindir}/hddtemp
