@@ -3,7 +3,7 @@
 Summary:        Hard Drive Temperature Monitoring
 Name:           hddtemp
 Version:        0.3 
-Release:        %mkrel 0.%{betarel}.10
+Release:        %mkrel 0.%{betarel}.11
 License:        GPLv2
 Group:          Monitoring        
 URL:            http://www.guzu.net/linux/hddtemp.php
