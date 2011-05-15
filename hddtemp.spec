@@ -15,6 +15,7 @@ Source4:        hddtemp.sysconfig
 Source5:        hddtemp.pam
 Source6:        hddtemp.consoleapp
 Patch0:		hddtemp_0.3-beta15-45.diff
+Patch1:		%{name}-0.3-beta15-reg-eip.patch
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires:       usermode-consoleonly
@@ -30,6 +31,7 @@ drives have a temperature sensor.
 %prep
 %setup -q -n hddtemp-%{version}-%{betarel}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure2_5x \
