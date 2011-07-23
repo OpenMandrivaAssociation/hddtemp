@@ -2,10 +2,10 @@
 
 Summary:        Hard Drive Temperature Monitoring
 Name:           hddtemp
-Version:        0.3 
-Release:        %mkrel 0.%{betarel}.14
+Version:        0.3
+Release:        %mkrel 0.%{betarel}.15
 License:        GPLv2
-Group:          Monitoring        
+Group:          Monitoring
 URL:            http://www.guzu.net/linux/hddtemp.php
 Source0:        http://download.savannah.nongnu.org/releases/hddtemp/hddtemp-%{version}-%{betarel}.tar.bz2
 Source1:        http://download.savannah.nongnu.org/releases/hddtemp/hddtemp-%{version}-%{betarel}.tar.bz2.sig
@@ -66,9 +66,9 @@ drives have a temperature sensor.
 %files -f %{name}.lang
 %defattr(0644,root,root,0755)
 %doc ChangeLog README TODO contribs debian/changelog
-%attr(0755,root,root) %{_bindir}/hddtemp
+%attr(4755,root,root) %{_bindir}/hddtemp
 %attr(0755,root,root) %{_initrddir}/hddtemp
-%attr(0755,root,root) %{_sbindir}/hddtemp
+%attr(4755,root,root) %{_sbindir}/hddtemp
 %config(noreplace) %{_sysconfdir}/hddtemp.db
 %config(noreplace) %{_sysconfdir}/sysconfig/hddtemp
 %config(noreplace) %{_sysconfdir}/pam.d/hddtemp
