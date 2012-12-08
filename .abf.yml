@@ -1,8 +1,2 @@
 sources:
-  "hddtemp-0.3-beta15.tar.bz2:"	65393b0a4d9862c030c81702d95c1acd00da275b
-  "hddtemp-0.3-beta15.tar.bz2.sig:"	d12c7a036393022d797818147881432894fe32a1
-  "hddtemp.consoleapp:"	0215e1ff1e06171e974704a25862f3d69a9a7c26
-  "hddtemp.db:"	4e7b84861f0a3be72f09bcccf49fb2b69eaea7bb
-  "hddtemp.init:"	fb69b258b58e90ad4a8d898e040dd4e59bba7708
-  "hddtemp.pam:"	6197949701135c0e21c9b3d60f31421e0e8475af
-  "hddtemp.sysconfig:"	d989f4d375cc4edf25f5d9bd4778628a1f68e571
+  "hddtemp-0.3-beta15.tar.bz2": 65393b0a4d9862c030c81702d95c1acd00da275b

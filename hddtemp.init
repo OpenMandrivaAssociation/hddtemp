@@ -1,0 +1,79 @@
+#!/bin/sh
+#
+# hddtemp	This shell script takes care of starting and stopping hddtemp.
+#
+# chkconfig: 2345 90 10
+# description: hddtemp provides information about hard drives' temperature
+# processname: hddtemp
+#
+### BEGIN INIT INFO
+# Provides: hddtemp
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 2 3 4 5
+# Short-Description: Information about hard drives' temperature
+# Description: hddtemp provides information about hard drives' temperature
+### END INIT INFO
+
+SERVICE=hddtemp
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ ${NETWORKING} = "no" ] && exit 0
+
+# hddtemp configuration
+[ -f /etc/sysconfig/$SERVICE ] && . /etc/sysconfig/$SERVICE
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+RETVAL=0
+
+# Backwards compatibility.
+[ -z "$HDDTEMP_OPTIONS" -a -n "$HDDTEMPARGS" ] && \
+  HDDTEMP_OPTIONS="$HDDTEMPARGS"
+HDDTEMP_OPTIONS="$HDDTEMP_OPTIONS $HDDTEMP_DAEMON_OPTIONS"
+
+start() {
+    gprintf "Starting hard disk temperature monitor daemon"
+    daemon /usr/sbin/$SERVICE -d $HDDTEMP_OPTIONS
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch /var/lock/subsys/$SERVICE
+    return $RETVAL
+}
+
+stop() {
+    gprintf "Stopping hard disk temperature monitor daemon"
+    killproc $SERVICE
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/$SERVICE
+    return $RETVAL
+}
+
+restart() {
+    stop
+    start
+}
+
+# See how we were called.
+case "$1" in
+    start|stop|restart)
+        $1
+        ;;
+    reload|force-reload)
+        restart
+        ;;
+    status)
+        status $SERVICE
+        ;;
+    try-restart|condrestart)
+        [ ! -f $lockfile ] || restart
+        ;;
+    *)
+        gprintf "Usage: %s {start|stop|status|restart|try-restart|reload|force-reload}\n" "$SERVICE"
+        exit 1
+esac
