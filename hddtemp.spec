@@ -3,19 +3,21 @@
 Summary:        Hard Drive Temperature Monitoring
 Name:           hddtemp
 Version:        0.3 
-Release:        0.%{betarel}.15
+Release:        0.%{betarel}.16
 License:        GPLv2
 Group:          Monitoring        
 Url:            http://www.guzu.net/linux/hddtemp.php
 Source0:        http://download.savannah.nongnu.org/releases/hddtemp/hddtemp-%{version}-%{betarel}.tar.bz2
 Source1:        http://download.savannah.nongnu.org/releases/hddtemp/hddtemp-%{version}-%{betarel}.tar.bz2.sig
 Source2:        http://download.savannah.nongnu.org/releases/hddtemp/hddtemp.db
-Source3:        hddtemp.init
+Source3:        hddtemp.service
 Source4:        hddtemp.sysconfig
 Source5:        hddtemp.pam
 Source6:        hddtemp.consoleapp
 Patch0:		hddtemp_0.3-beta15-45.diff
 Patch1:		%{name}-0.3-beta15-reg-eip.patch
+Patch2:		hddtemp-0.3-beta15-autodetect-717479.patch
+
 BuildRequires:  gettext
 BuildRequires:  perl
 Requires(post,postun):	rpm-helper
@@ -38,9 +40,8 @@ drives have a temperature sensor.
 
 %install
 %makeinstall_std
-
 install -m 0644 %{SOURCE2} -D %{buildroot}%{_sysconfdir}/hddtemp.db
-install -m 0755 %{SOURCE3} -D %{buildroot}%{_initrddir}/hddtemp
+install -m 0755 %{SOURCE3} -D %{buildroot}%{_unitdir}/hddtemp.service
 install -m 0644 %{SOURCE4} -D %{buildroot}%{_sysconfdir}/sysconfig/hddtemp
 mkdir -p %{buildroot}%{_bindir}
 ln -s consolehelper %{buildroot}%{_bindir}/hddtemp
@@ -50,19 +51,19 @@ install -m 0644 %{SOURCE6} -D %{buildroot}%{_sysconfdir}/security/console.apps/h
 %find_lang %{name}
 
 %post
-%_post_service hddtemp
+%tmpfiles_create %{name}
+%_post_service %{name}
 
 %preun
-%_preun_service hddtemp
+%_preun_service %{name}
 
 %files -f %{name}.lang
 %doc ChangeLog README TODO contribs debian/changelog
 %{_bindir}/hddtemp
-%{_initrddir}/hddtemp
+%{_unitdir}/hddtemp.service
 %{_sbindir}/hddtemp
 %config(noreplace) %{_sysconfdir}/hddtemp.db
 %config(noreplace) %{_sysconfdir}/sysconfig/hddtemp
 %config(noreplace) %{_sysconfdir}/pam.d/hddtemp
 %config(noreplace) %{_sysconfdir}/security/console.apps/hddtemp
 %{_mandir}/man8/hddtemp.8*
-

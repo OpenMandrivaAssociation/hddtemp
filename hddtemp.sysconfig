@@ -1,4 +1,5 @@
 #
-# hddtemp(8) daemon options.  Add at least the disk(s) you want to monitor here.
+# hddtemp(8) daemon options.  If no disks are specified here, the service
+# will try to autodetect and start monitoring all of them.
 #
-HDDTEMP_OPTIONS="-l 127.0.0.1 /dev/hd? /dev/sd?"
+HDDTEMP_OPTIONS="-l 127.0.0.1"
