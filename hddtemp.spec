@@ -71,7 +71,7 @@ EOF
 %{_bindir}/hddtemp
 %{_unitdir}/hddtemp.service
 %{_sbindir}/hddtemp
-%{_datadir}/hddtemp.db
+%{_datadir}/misc/hddtemp.db
 %{_presetdir}/86-hddtemp.preset
 %config(noreplace) %{_sysconfdir}/sysconfig/hddtemp
 %config(noreplace) %{_sysconfdir}/pam.d/hddtemp
