@@ -1,0 +1,11 @@
+--- po/ru.po.orig	2019-05-05 14:56:48.213240623 +0700
++++ po/ru.po	2019-05-05 14:57:09.047473626 +0700
+@@ -50,7 +50,7 @@
+ #: src/hddtemp.c:235
+ #, c-format
+ msgid "%s: %s: drive is sleeping\n"
+-msgstr "%s: %s:  нет датчика\n"
++msgstr "%s: %s: диск в состоянии сна\n"
+ 
+ #: src/hddtemp.c:242
+ #, fuzzy, c-format
