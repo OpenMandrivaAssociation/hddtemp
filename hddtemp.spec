@@ -6,7 +6,7 @@ Version:	0.3
 Release:	0.%{betarel}.19
 License:	GPLv2
 Group:		Monitoring
-Url:		http://www.guzu.net/linux/hddtemp.php
+Url:		https://www.guzu.net/linux/hddtemp.php
 Source0:	http://download.savannah.nongnu.org/releases/hddtemp/hddtemp-%{version}-%{betarel}.tar.bz2
 Source2:	http://download.savannah.nongnu.org/releases/hddtemp/hddtemp.db
 Source3:	hddtemp.service
