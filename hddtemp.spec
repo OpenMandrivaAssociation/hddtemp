@@ -25,6 +25,11 @@ Patch5:		ru.po.patch
 # https://bugzilla.redhat.com/show_bug.cgi?id=1801116
 Patch6:		%{name}-nvme.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gettext
 BuildRequires:	pkgconfig(libsystemd)
 %systemd_requires
